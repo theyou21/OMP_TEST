@@ -2,7 +2,7 @@
       
         PARAMETER(IL = 100, JL = 100, KL = 10)
         DOUBLE PRECISION RES(IL,JL,KL)
-        OPEN(9,FILE='out.txt')
+        OPEN(9,FILE='/output/out.txt')
           NUM_MP = 1
           call omp_set_num_threads(NUM_MP)
           IF(mod(JL,NUM_MP).eq.0) THEN
