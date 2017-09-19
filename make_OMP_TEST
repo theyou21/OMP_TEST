@@ -1,0 +1,18 @@
+# Defining variables
+D = ../
+objects = OMP_TEST.o
+exename = OMP_TEST
+
+flags  = gfortran -fopenmp
+flags += -O3
+
+# Makefile
+$(D)$(exename): $(objects) 
+	$(flags) -o $(D)$(exename)  $(objects)
+
+OMP_TEST.o: OMP_TEST.f
+	$(flags) -c OMP_TEST.f
+
+# Cleaning everything
+clean:
+	rm $(objects)
