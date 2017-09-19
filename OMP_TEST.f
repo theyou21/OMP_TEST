@@ -2,8 +2,9 @@
       
         PARAMETER(IL = 100, JL = 100, KL = 10)
         DOUBLE PRECISION RES(IL,JL,KL)
-        OPEN(9,FILE='/output/out.txt')
-          NUM_MP = 1
+        OPEN(9,FILE='output/out.txt')
+        OPEN(10,FILE='input/in.txt')
+          READ(10,*) NUM_MP
           call omp_set_num_threads(NUM_MP)
           IF(mod(JL,NUM_MP).eq.0) THEN
               ICHUNK = JL/NUM_MP
@@ -38,4 +39,5 @@
          write(9,*) 'step = ',k,'cpu time = ',finish-start
       enddo
       close(9)
+      close(10)
       END
